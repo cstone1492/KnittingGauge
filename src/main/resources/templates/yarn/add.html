@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label th:for="brand">Brand</label>
+        <input class="form-control" th:field="${yarn.brand}" />
+    </div>
+
+    <div class="form-group">
+        <label th:for="color">Color</label>
+        <select th:field="${yarn.color}">
+            <option th:each="color : ${colors}"
+                    th:text="${color.name}"
+                    th:value="${color.id}"></option>
+        </select>
+        <a th:href="@{'/color/add'}">Add Colors</a>
+    </div>
+
+    <div class="form-group">
+        <label th:for="weight">Weight</label>
+        <input class="form-control" th:field="${yarn.weight}" />
+    </div>
+
+    <div class="form-group">
+        <label th:for="wpi">WPI</label>
+        <input class="form-control" th:field="${yarn.wpi}" />
+    </div>
+
+    <input type="submit" value="Add Yarn" />
+</form>
+
+</body>
+</html>

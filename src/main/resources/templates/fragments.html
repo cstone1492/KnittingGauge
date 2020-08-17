@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:fragment="head">
+
+    <!-- Bootstrap stylesheets and script -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/knitting-conversions.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+
+    <title th:text="'Knitting Conversions' + ${title == null ? '' : ' :: ' + title}">Knitting Conversions</title>
+</head>
+<body>
+
+<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a th:href="@{/}" class="navbar-brand">Knitting-Conversions</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/list}">List Yarns</a></li>
+                <li><a th:href="@{/search}">Search Yarns</a></li>
+                <li><a th:href="@{/yarn/add}">Add Yarn</a></li>
+                <li><a th:href="@{/gauge/add}">Add Gauge</a></li>
+                <li><a th:href="@{/gauge-calculator}">Gauge Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
