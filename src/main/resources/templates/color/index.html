@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head">
+        <meta charset="UTF-8">
+    </head>
+    <body>
 
-</body>
+        <div th:replace="fragments :: page-header"></div>
+
+        <div th:unless="${colors} and ${colors.size()}">
+            <p>no brands</p>
+            <a th:href="@{'/color/add'}">Add Colors</a>
+        </div>
+
+        <div class="container body-content">
+            <h2>Colors</h2>
+            <ul>
+                <li th:each="color : ${colors}">
+                    <a th:href="@{'/view/' + ${color.id}}" th:text="${color.name}"></a>
+                </li>
+            </ul>
+            <a th:href="@{'/color/add'}">Add Colors</a>
+        </div>
+
+    </body>
 </html>

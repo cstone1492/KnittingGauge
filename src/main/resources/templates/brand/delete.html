@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div th:unless="${brands} and ${brands.size()}">
+    <p>no brands</p>
+    <a th:href="@{'/brand/add'}">Add Brands</a>
+</div>
+
+<div class="container body-content">
+    <h2>Brands</h2>
+        <form method="post" style="max-width:600px;">
+            <th:block th:each="brand : ${brands}">
+                <div class="form-group">
+                    <label>
+                        <span th:text="${brand.name}"></span>
+                        <input type="checkbox" name="brandIds" th:value="${brand.id}" class="form-control">
+                    </label>
+                </div>
+            </th:block>
+
+            <input type="submit" value="Delete Selected Brands" class="btn btn-danger">
+        </form>
+
+
+    <a th:href="@{'/brand/add'}">Add Brands</a>
+</div>
+
+</body>
+</html>
