@@ -1,5 +1,7 @@
 package one.philosopherstone.knittingconversions.models;
 
+import one.philosopherstone.knittingconversions.models.data.GaugeRepository;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -10,11 +12,11 @@ import java.util.List;
 @Entity
 public class Yarn extends AbstractEntity{
 
-    private String brand;
+    @ManyToOne
+    private Brand brand;
 
-    private String weight;
-
-    private Integer wpi;
+    @ManyToOne
+    private Weight weight;
 
     @ManyToOne
     private Color color;
@@ -26,35 +28,26 @@ public class Yarn extends AbstractEntity{
     public Yarn() {
     }
 
-    public Yarn(String brand, String weight, Integer wpi, Color color) {
+    public Yarn(Brand brand, Weight weight, Color color, GaugeRepository someGauges) {
         this.brand = brand;
         this.weight = weight;
-        this.wpi = wpi;
         this.color = color;
     }
 
-    public String getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 
-    public String getWeight() {
+    public Weight getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(Weight weight) {
         this.weight = weight;
-    }
-
-    public Integer getWpi() {
-        return wpi;
-    }
-
-    public void setWpi(Integer wpi) {
-        this.wpi = wpi;
     }
 
     public Color getColor() {
@@ -63,5 +56,13 @@ public class Yarn extends AbstractEntity{
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public List<Gauge> getGauges() {
+        return gauges;
+    }
+
+    public void setGauges(List<Gauge> gauges) {
+        this.gauges = gauges;
     }
 }

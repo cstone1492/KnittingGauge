@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div th:unless="${brands} and ${brands.size()}">
+<p>no brands</p>
+<a th:href="@{'/brand/add'}">Add Brands</a>
+</div>
+
+<div class="container body-content">
+    <h2>Brands</h2>
+    <ul>
+        <li th:each="brand : ${brands}">
+            <a th:href="@{'/view/' + ${brand.id}}" th:text="${brand.name}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/brand/add'}">Add Brands</a>
+</div>
+
+</body>
+</html>

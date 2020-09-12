@@ -1,6 +1,9 @@
 package one.philosopherstone.knittingconversions.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Gauge extends AbstractEntity{
@@ -10,6 +13,9 @@ public class Gauge extends AbstractEntity{
     private Integer spi;
 
     private Integer needleSize;
+
+    @ManyToMany(mappedBy = "gauges")
+    private final List<Yarn> yarns = new ArrayList<>();
 
     public Gauge() {
     }

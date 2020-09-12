@@ -1,0 +1,22 @@
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <head th:replace="fragments :: head">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+        <div th:replace="fragments :: page-header"></div>
+
+        <div class="container body-content">
+            <form method="post" style="max-width:600px;">
+
+                <div class="form-group">
+                    <label th:for="name">Name</label>
+                    <input class="form-control" th:field="${color.name}" />
+                </div>
+
+                <input type="submit" value="Add Color" />
+            </form>
+        </div>
+
+    </body>
+</html>

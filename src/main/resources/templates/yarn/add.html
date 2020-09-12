@@ -7,10 +7,22 @@
 
 <div th:replace="fragments :: page-header"></div>
 
+<div class="container body-content">
 <form method="post" style="max-width:600px;">
+
+    <div class="form-group">
+        <label th:for="name">Name</label>
+        <input class="form-control" th:field="${yarn.name}" />
+    </div>
+
     <div class="form-group">
         <label th:for="brand">Brand</label>
-        <input class="form-control" th:field="${yarn.brand}" />
+        <select th:field="${yarn.brand}">
+            <option th:each="brand : ${brands}"
+                    th:text="${brand.name}"
+                    th:value="${brand.id}"></option>
+        </select>
+        <a th:href="@{'/brand/add'}">Add Brands</a>
     </div>
 
     <div class="form-group">
@@ -25,16 +37,27 @@
 
     <div class="form-group">
         <label th:for="weight">Weight</label>
-        <input class="form-control" th:field="${yarn.weight}" />
+        <select th:field="${yarn.weight}">
+            <option th:each="weight : ${weights}"
+                    th:text="${weight.name}"
+                    th:value="${weight.id}"></option>
+        </select>
+        <a th:href="@{'/weight/add'}">Add Weights</a>
     </div>
 
     <div class="form-group">
-        <label th:for="wpi">WPI</label>
-        <input class="form-control" th:field="${yarn.wpi}" />
+        <label th:for="gauges">Gauges</label>
+        <th:block th:each="gauge : ${gauges}">
+            <input type="checkbox" name="gauges" th:value="${gauge.id}">
+            <label th:text="${gauge.name}"></label>
+        </th:block>
+        <a th:href="@{'/gauges/add'}">Add Gauges</a>
     </div>
 
     <input type="submit" value="Add Yarn" />
 </form>
+
+</div>
 
 </body>
 </html>
