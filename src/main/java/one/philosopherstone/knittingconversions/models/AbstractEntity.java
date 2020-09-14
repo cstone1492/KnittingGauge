@@ -3,6 +3,7 @@ package one.philosopherstone.knittingconversions.models;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @MappedSuperclass
@@ -12,6 +13,7 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private Integer id;
 
+    @NotBlank(message = "name required")
     private String name;
 
     public AbstractEntity() {

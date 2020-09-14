@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://thymeleaf.org/">
 <head th:replace="fragments :: head">
     <meta charset="UTF-8">
 </head>
@@ -13,6 +13,7 @@
     <div class="form-group">
         <label th:for="name">Name</label>
         <input class="form-control" th:field="${yarn.name}" />
+        <span th:errors="${yarn.name}" class="error"></span>
     </div>
 
     <div class="form-group">

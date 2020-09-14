@@ -11,8 +11,12 @@ import one.philosopherstone.knittingconversions.models.data.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import  javax.validation.Constraint;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,19 +53,24 @@ public class HomeController {
     }
 
     @PostMapping("yarn/add")
-    public String processAddYarnForm(@ModelAttribute Yarn newYarn, Error errors,
+    public String processAddYarnForm(@ModelAttribute @Valid Yarn newYarn, Error errors,
                                      Model model,
                                      @RequestParam (required = false) Integer brand,
                                      @RequestParam (required = false) Integer color,
                                      @RequestParam (required = false) Integer weight) {
 
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Add Yarn");
+            return "yarn/add";
+        }
+
         model.addAttribute("newYarn", newYarn);
         Optional<Brand> yarnBrand = brandRepository.findById(brand);
 
         Optional<Color> yarnColor = colorRepository.findById(color);
-        //newYarn.setColor(yarnColor);
+
         Optional <Weight> yarnWeight = weightRepository.findById(weight);
-        //newYarn.setWeight(yarnWeight);
+
         yarnRepository.save(newYarn);
         return "redirect:";
     }
