@@ -1,13 +1,8 @@
 package one.philosopherstone.knittingconversions.models;
 
-import one.philosopherstone.knittingconversions.models.data.GaugeRepository;
-
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Yarn extends AbstractEntity{
@@ -21,14 +16,10 @@ public class Yarn extends AbstractEntity{
     @ManyToOne
     private Color color;
 
-    //link to gauge, list of gauges with associated needle size
-    @ManyToMany
-    private List<Gauge> gauges = new ArrayList<>();
-
     public Yarn() {
     }
 
-    public Yarn(Brand brand, Weight weight, Color color, GaugeRepository someGauges) {
+    public Yarn(Brand brand, Weight weight, Color color) {
         this.brand = brand;
         this.weight = weight;
         this.color = color;
@@ -58,11 +49,4 @@ public class Yarn extends AbstractEntity{
         this.color = color;
     }
 
-    public List<Gauge> getGauges() {
-        return gauges;
-    }
-
-    public void setGauges(List<Gauge> gauges) {
-        this.gauges = gauges;
-    }
 }

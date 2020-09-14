@@ -10,11 +10,15 @@ public abstract class AbstractEntity {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     private String name;
 
-    public int getId() {
+    public AbstractEntity() {
+
+    }
+
+    public Integer getId() {
         return id;
     }
 
@@ -23,6 +27,10 @@ public abstract class AbstractEntity {
     }
 
     public void setName(String name) {
+        this.name = name;
+    }
+
+    public AbstractEntity(String name) {
         this.name = name;
     }
 

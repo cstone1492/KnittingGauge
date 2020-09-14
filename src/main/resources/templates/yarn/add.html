@@ -44,15 +44,6 @@
         </select>
     </div>
 
-    <div class="form-group">
-        <label th:for="gauges">Gauges</label>
-        <th:block th:each="gauge : ${gauges}">
-            <input type="checkbox" name="gauges" th:value="${gauge.id}">
-            <label th:text="${gauge.name}"></label>
-        </th:block>
-        <a th:href="@{'/gauges/add'}">Add Gauges</a>
-    </div>
-
     <input type="submit" value="Add Yarn" />
 </form>
 

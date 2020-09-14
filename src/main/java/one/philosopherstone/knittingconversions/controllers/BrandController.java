@@ -1,11 +1,14 @@
 package one.philosopherstone.knittingconversions.controllers;
 
 import one.philosopherstone.knittingconversions.models.Brand;
+import one.philosopherstone.knittingconversions.models.Yarn;
 import one.philosopherstone.knittingconversions.models.data.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("brand")
@@ -42,15 +45,17 @@ public class BrandController {
     }
 
     @PostMapping("delete")
-    public String processDeleteBrandForm(@RequestParam(required = false)int[] brandIds){
+    public String processDeleteBrandForm(@RequestParam(required = false)int[] brandIds) {
 
         if (brandIds != null) {
             for (int id : brandIds) {
-                brandRepository.deleteById(id);
+                Optional<Brand> brand = brandRepository.findById(id);
+                if (brand.isPresent()) {
+                    brandRepository.deleteById(id);
+                }
             }
         }
-
-        return "brand/index";
+        return "redirect:";
     }
 
 }
