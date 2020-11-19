@@ -13,7 +13,7 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private Integer id;
 
-    @NotBlank(message = "name required")
+    @NotBlank(message = "required")
     private String name;
 
     public AbstractEntity() {

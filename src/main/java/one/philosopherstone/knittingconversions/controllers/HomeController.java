@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import  javax.validation.Constraint;
+import javax.validation.Constraint;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,10 +59,10 @@ public class HomeController {
                                      @RequestParam (required = false) Integer color,
                                      @RequestParam (required = false) Integer weight) {
 
-        if (errors.hasErrors()) {
+        /**if (errors.hasErrors()) {
             model.addAttribute("title", "Add Yarn");
             return "yarn/add";
-        }
+        }**/
 
         model.addAttribute("newYarn", newYarn);
         Optional<Brand> yarnBrand = brandRepository.findById(brand);
