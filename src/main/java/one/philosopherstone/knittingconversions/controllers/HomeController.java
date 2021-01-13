@@ -34,7 +34,7 @@ public class HomeController {
     @Autowired
     private YarnRepository yarnRepository;
 
-    @RequestMapping("")
+    @RequestMapping("yarn")
     public String index(Model model) {
         model.addAttribute("title", "My Yarns");
 
