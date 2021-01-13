@@ -34,12 +34,14 @@ public class HomeController {
     @Autowired
     private YarnRepository yarnRepository;
 
-    @RequestMapping("yarn")
+    @RequestMapping(value={"yarn", "list"})
     public String index(Model model) {
         model.addAttribute("title", "My Yarns");
+        model.addAttribute("yarns", yarnRepository.findAll());
 
-        return "index";
+        return "yarn/index";
     }
+
 
     @GetMapping("yarn/add")
     public String displayAddYarnForm(Model model) {

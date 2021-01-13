@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
 </head>
 <body>
+<p>Index</p>
 
 <div th:replace="fragments :: page-header"></div>
+
+<p th:unless="${yarns} and ${yarns.size()}">no yarns!</p>
+
+<div>
+    <h2>Yarns</h2>
+    <ul>
+        <li th:each="yarn: ${yarns}">
+            <p th:text ${yarn.name}></p>
+        </li>
+    </ul>
+    <a th:href="@{'/yarn/add'}">Add Yarn</a>
+</div>
+
 </body>
 
 </html>
